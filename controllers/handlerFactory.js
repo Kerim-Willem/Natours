@@ -1,7 +1,7 @@
 // Factory function: A function that returns another function. Since we're making a lot of requests, updating the type of response we're giving is going to be time consuming and making us write code more then once for the same thing. We're creating the handler in this map because we're creating handlers for the controllers.
 const catchAsync = require('./../utils/catchAsync');
 const AppError = require('./../utils/appError');
-const APIFeatures = require('./../utils/apifeatures');
+const APIFeatures = require('./../utils/apiFeatures');
 
 // This function is not only going to work for deleting tours, but also to delete reviews and users, and ofcourse some other future documents we have. See that we're putting a function (catchAsync) within a function (model)
 exports.deleteOne = (Model) =>
