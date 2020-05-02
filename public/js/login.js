@@ -7,7 +7,8 @@ export const login = async (email, password) => {
 	try {
 		const res = await axios({
 			method: 'POST',
-			url: 'http://127.0.0.1:3000/api/v1/users/login',
+			// deleting so it's fixed for production http://127.0.0.1:3000
+			url: '/api/v1/users/login',
 			data: {
 				email,
 				password
@@ -33,7 +34,7 @@ export const logout = async () => {
 	try {
 		const res = await axios({
 			method: 'GET',
-			url: 'http://127.0.0.1:3000/api/v1/users/logout'
+			url: '/api/v1/users/logout'
 		});
 		// If we make the request without sending the new empty cookie, the user page is still visible. That's why we reload the page with reload(true). Doing reload(true) will reload from the server, and not from the browser cache. So it's important to do it like this to get redirected to the login page!
 		if ((res.data.status = 'success')) location.reload(true);

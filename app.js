@@ -14,7 +14,8 @@ const xss = require('xss-clean');
 // Parameter pollution | We need it in order to remove duplicate fields. Hackers can use this. Didn't understand it completely but it's important!
 const hpp = require('hpp');
 const cookieParser = require('cookie-parser');
-
+// Middleware
+const compression = require('compression');
 const AppError = require('./utils/appError');
 // because we're not calling the exported module.exports in particular, we can call it however we like. It doesn't matter
 const globalErrorHandler = require('./controllers/errorController');
@@ -78,6 +79,9 @@ app.use(
 		]
 	})
 );
+
+// will compress text that's send to the user
+app.use(compression());
 
 // Test middleware
 app.use((req, res, next) => {
